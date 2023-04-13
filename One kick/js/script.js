@@ -166,7 +166,7 @@ $(function(){
             stopEnemies : null,
             enemyHitDuration: 3000,
             correctKick : false,
-            EnemyCount : Math.floor((window.outerWidth-56)/2/41),
+            EnemyCount : Math.floor((window.innerWidth-56)/2/41),
             gamesPlayedLocalStorage : function(key) {
                 localStorage && localStorage[key] ? localStorage[key] = +localStorage[key]+1 : localStorage[key] = "0";
             },
