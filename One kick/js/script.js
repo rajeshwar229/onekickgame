@@ -303,6 +303,9 @@ $(function(){
                 DOM.scoreEle.text(gameObj.score);
                 gameCtrl.addRemoveCls(DOM.gameArena,'justify-content-center d-inline-flex')
                         .addRemoveCls(DOM.heroEle, false, 'explode');
+                DOM.gameArena.css({
+                    "bottom" : window.innerHeight/11.5
+                });
 
                 const enemyHitTimeWidth = DOM.enemyHitTime.width();
                 // This method will keep adding enemies for every 300 milliseconds until the enemies length reach 15        
