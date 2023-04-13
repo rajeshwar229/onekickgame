@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="Images/favicon.png" type="image/x-icon">
+    <title>One Kick</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+
+    
+</head>
+<body class="bg-light text-dark platform">
+    <div class="main">
+        <h1 class="game-title text-center mt-4">One Kick</h1>
+        <div class="row m-0 setup">
+            <div class="col-4 mx-auto">
+                <form class="d-flex flex-column">
+                    <button class="play-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-parent="setup" data-show="game">Play</button>
+                    <button class="help-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-toggle="modal" data-target="#help-modal">Help</button>
+                    <button class="stats-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-parent="setup" data-show="statistics">Statistics</button>
+                </form>
+            </div>
+        </div> 
+
+        <div class="game d-none">
+            <div class="row m-0">
+                <div class="col-4 mx-auto">
+                    <form class="d-flex flex-column">
+                        <button class="main-menu-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-parent="game" data-show="setup">Main Menu</button>
+                    </form>
+                    <h1 class="score-board text-center mt-4">Score:<span class="score">0</span></h1>
+                    <div class="enemy-hit-time progress" style="height: 20px;">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-arena w-100">
+                <div class="left-enemies" data-enemy="left"></div>
+                <div class="hero mx-auto"></div>
+                <div class="right-enemies" data-enemy="right"></div>
+            </div>
+        </div>
+
+        <div class="row m-0 statistics d-none">
+            <div class="col-4 mx-auto">
+                <ul class="list-group font-weight-bold text-center">
+                    <li class="list-group-item text-info">Number of games played 🎮 : <span class="games-played text-dark">0</span></li>
+                    <li class="list-group-item text-info">Your Score 💯 : <span class="score text-dark">0</span></li>
+                    <li class="list-group-item text-info">Highest Score 🔝 : <span class="highest-score text-dark">0</span></li>
+                </ul>
+                <form class="d-flex flex-column">
+                    <button class="play-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-parent="statistics" data-show="game">Play</button>
+                    <button class="main-menu-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-parent="statistics" data-show="setup">Main Menu</button>
+                </form>
+            </div>
+        </div>
+
+        <audio id="kick-sound"><source src="punch.mp3" type="audio/mp3"></audio>
+    </div>
+
+    <div class="modal fade text-center" id="help-modal" tabindex="-1" role="dialog" aria-labelledby="help-modal-label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-primary" id="exampleModalLabel">Help Modal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <p class="modal-body p-3 text-left">
+                The goal of the game is to start kicking the nearest enemy. Enemies come from left & right side.
+                Whoever is the nearest enemy to the hero, you should press that side arrow key.
+                You will only have 1 to 3 seconds before the enemy kicks you, then the game is over.
+                Your score is the number of enemies you kicked.
+                Good luck for you and enjoy the game!
+              </p>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+    </div>
+</body>
+</html>
