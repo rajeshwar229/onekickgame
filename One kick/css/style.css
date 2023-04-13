@@ -10,9 +10,10 @@ div.main {
     display: grid;
 }
 div.game-arena {
-    margin-top: 255px;
     height: 82px;
     overflow: hidden;
+    position: fixed;
+    bottom: 56px;
 }
 .justify-content-space-evenly{
     justify-content: space-evenly;
