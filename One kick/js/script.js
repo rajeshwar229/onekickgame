@@ -281,7 +281,7 @@ $(function(){
                         if(!gameObj.correctKick){
                             setTimeout(() => {
                                 resetGame();
-                            },300);
+                            },500);
                             if(gameObj.enemyList.length === 15 && DOM.gameEle.is(':visible')){
                                 gameCtrl.addRemoveCls(DOM.nearestEnemy(), 'kick')
                                         .addRemoveCls(DOM.heroEle, 'explode');
@@ -402,7 +402,7 @@ $(function(){
                                             gameObj.start.ememyArray();
                                             gameObj.start.nearestEnemy();
                                         }
-                                    }, 100);
+                                    }, 120);
                                     
                                 }
                                 else{
