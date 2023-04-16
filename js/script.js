@@ -270,7 +270,7 @@ $(function(){
                         if(!gameObj.correctKick){
                             setTimeout(() => {
                                 resetGame();
-                            },500);
+                            },300);
                             if(gameObj.enemyList.length === gameObj.EnemyCount && DOM.gameEle.is(':visible')){
                                 gameCtrl.addRemoveCls(DOM.nearestEnemy(), 'kick')
                                         .addRemoveCls(DOM.heroEle, 'explode');
@@ -455,7 +455,7 @@ $(function(){
                                                 .addRemoveCls(DOM.heroEle, 'explode');
                                     setTimeout(() => {
                                         resetGame();
-                                    },500);
+                                    },300);
                                 }
                             }
                         }
