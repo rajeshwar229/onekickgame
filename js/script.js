@@ -265,6 +265,7 @@ $(function(){
                         .addCSS(DOM.enemyHitTime, `{"width": "100%"}`)
                         .emptyEle(DOM.leftEnemyParent)
                         .emptyEle(DOM.rightEnemyParent)
+                        .attrChange(DOM.heroEle,'data-level',0)
                         .addContent(DOM.gamesPlayed, localStorage['oneKickGamesPlayed'])
                         .addContent(DOM.highScore, localStorage['oneKickHighScore']);
                 clearInterval(gameObj.stopEnemies);
@@ -377,8 +378,9 @@ $(function(){
                     }
                  },300);   
                     
-                 DOM.documentEle.on('keyup', function(event){
+                 DOM.documentEle.on('keyup touchstart', function(event){
                         event.preventDefault();
+                        
                         // This is the setTimeOut time for increasing enemy hit time width
                         let bloodTime = 100;
                         
@@ -393,14 +395,16 @@ $(function(){
                                     gameCtrl.addRemoveCls(DOM.heroEle,false,'kick');
                                 },200);
                                 
+                                
+                                
                                 // Add hero-flip and kick class for left kick
-                                if(event.which == 37){
+                                if(event.which == 37 || event.touches[0].clientX < window.innerWidth/2){
                                     kick = "left";
                                     gameCtrl.addRemoveCls(DOM.heroEle,'hero-flip kick');
                                     
                                 }
                                 // Remove hero-flip and add kick class for right kick
-                                else if(event.which == 39){
+                                else if(event.which == 39 || event.touches[0].clientX > window.innerWidth/2)
                                     kick = "right";
                                     gameCtrl.addRemoveCls(DOM.heroEle,'kick','hero-flip');
                                 }
