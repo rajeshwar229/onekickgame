@@ -66,6 +66,9 @@ body.platform[data-template="template2"] .heading{
 div.main {
     display: grid;
 }
+div.volume-controls{
+    z-index: 2;
+}
 div.game-arena {
     height: 82px;
     overflow: hidden;
