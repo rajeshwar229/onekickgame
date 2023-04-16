@@ -271,7 +271,7 @@ $(function(){
                             setTimeout(() => {
                                 resetGame();
                             },500);
-                            if(gameObj.enemyList.length === 15 && DOM.gameEle.is(':visible')){
+                            if(gameObj.enemyList.length === gameObj.EnemyCount && DOM.gameEle.is(':visible')){
                                 gameCtrl.addRemoveCls(DOM.nearestEnemy(), 'kick')
                                         .addRemoveCls(DOM.heroEle, 'explode');
                                 kickSound();
