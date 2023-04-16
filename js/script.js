@@ -53,6 +53,9 @@ $(function(){
             audioControl : function(dataset) {
                 return $(`audio[data-link=${dataset}]`);
             },
+            difficultySelect : function(dataset) {
+                return $('input[name="difficulty"][type="radio"]:checked')[0];
+            }
         };
 
         // Return the DOMElements object to be used by controller function
@@ -171,7 +174,7 @@ $(function(){
             enemyList : [],
             nearestEnemySide : "",
             stopEnemies : null,
-            enemyHitDuration: 3000,
+            enemyHitDuration : 3000,
             correctKick : false,
             EnemyCount : Math.floor((window.innerWidth-56)/2/41),
             gamesPlayedLocalStorage : function(key) {
@@ -269,9 +272,8 @@ $(function(){
 
             const enemyHit = function(enemyHitTimeWidthArg){
                 
-                gameObj.enemyHitDuration = gameObj.score < 100 ? 3000 : gameObj.score >= 100 & gameObj.score <200 ? 2000 : 1000;
-
-                    let currentEnemyHitTimeWidth = DOM.enemyHitTime.width();
+                gameObj.enemyHitDuration = gameObj.score < 100 ? DOM.difficultySelect().dataset.level0 : gameObj.score >= 100 & gameObj.score <200 ? DOM.difficultySelect().dataset.level1 : DOM.difficultySelect().dataset.level2;
+                let currentEnemyHitTimeWidth = DOM.enemyHitTime.width();
                     let currentEnemyHitTimeWidthPercent = currentEnemyHitTimeWidth/enemyHitTimeWidthArg;
 
                     gameObj.enemyHitDuration > 1000 ? currentEnemyHitTimeWidthPercent < 0.3 ? currentEnemyHitTimeWidthPercent = currentEnemyHitTimeWidthPercent*2: null: currentEnemyHitTimeWidthPercent = 1;
