@@ -404,7 +404,7 @@ $(function(){
                                     
                                 }
                                 // Remove hero-flip and add kick class for right kick
-                                else if(event.which == 39 || event.touches[0].clientX > window.innerWidth/2)
+                                else if(event.which == 39 || event.touches[0].clientX > window.innerWidth/2){
                                     kick = "right";
                                     gameCtrl.addRemoveCls(DOM.heroEle,'kick','hero-flip');
                                 }
