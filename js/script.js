@@ -395,7 +395,12 @@ $(function(){
                                     gameCtrl.addRemoveCls(DOM.heroEle,false,'kick');
                                 },200);
                                 
-                                
+                                if(event.touches[0].clientX < window.innerWidth/2){
+                                    alert('you touched left');
+                                }
+                                if(event.touches[0].clientX > window.innerWidth/2){
+                                    alert('you touched right');
+                                }
                                 
                                 // Add hero-flip and kick class for left kick
                                 if(event.which == 37 || event.touches[0].clientX < window.innerWidth/2){
