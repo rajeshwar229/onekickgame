@@ -324,7 +324,7 @@ $(function(){
                 DOM.gamePlayMusic.play();
                 jQuery.fx.off = true;
                 // Unbind keyup event as kick should be enabled only after the enemy reaches the hero 
-                DOM.documentEle.unbind('keyup');
+                DOM.documentEle.unbind('keyup touchstart');
                 gameObj.start = gameObj.start || new gameObject();
                 gameObj.start.enemyReached = false;
                 gameObj.over = false;
