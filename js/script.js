@@ -272,7 +272,18 @@ $(function(){
 
             const enemyHit = function(enemyHitTimeWidthArg){
                 
-                gameObj.enemyHitDuration = gameObj.score < 100 ? DOM.difficultySelect().dataset.level0 : gameObj.score >= 100 & gameObj.score <200 ? DOM.difficultySelect().dataset.level1 : DOM.difficultySelect().dataset.level2;
+                if(gameObj.score < 100){
+                    gameObj.enemyHitDuration = DOM.difficultySelect().dataset.level0;
+                    gameCtrl.attrChange(DOM.heroEle,'data-level',0);
+                }
+                else if(gameObj.score >= 100 & gameObj.score <200){
+                    gameObj.enemyHitDuration = DOM.difficultySelect().dataset.level1;
+                    gameCtrl.attrChange(DOM.heroEle,'data-level',1);
+                }
+                else{
+                    gameObj.enemyHitDuration = DOM.difficultySelect().dataset.level2;
+                    gameCtrl.attrChange(DOM.heroEle,'data-level',2);
+                }
                 let currentEnemyHitTimeWidth = DOM.enemyHitTime.width();
                     let currentEnemyHitTimeWidthPercent = currentEnemyHitTimeWidth/enemyHitTimeWidthArg;
 
@@ -365,7 +376,8 @@ $(function(){
                     else {
                     }
                  },300);   
-                    DOM.documentEle.on('keyup', function(event){
+                    
+                 DOM.documentEle.on('keyup', function(event){
                         event.preventDefault();
                         // This is the setTimeOut time for increasing enemy hit time width
                         let bloodTime = 100;
