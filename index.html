@@ -20,23 +20,27 @@
             <audio id="bg-music-1" src="bg-music-1.mp3" type="audio/mp3" autoplay="true" loop="loop" data-link="music" data-status="on"></audio>
             <audio id="bg-music-2" src="bg-music-2.mp3" type="audio/mp3" autoplay="true" loop="loop" data-link="music" data-status="on"></audio>
             <audio id="kick-sound" src="kick-sound.mp3" type="audio/mp3" data-link="sound" data-status="on"></audio>
-            <img src="Images/musicOn.png" class="music-on cursor-pointer w-25 mx-2" alt="Music control" data-off="Images/musicOff.png" data-on="Images/musicOn.png" data-link="music" data-status="on">
-            <img src="Images/soundOn.png" class="sound-on cursor-pointer w-25 mx-2" alt="Sound control" data-off="Images/soundOff.png" data-on="Images/soundOn.png" data-link="sound" data-status="on">
+            <img src="Images/musicOn.png" class="music-on cursor-pointer w-25 mx-md-2" alt="Music control" data-off="Images/musicOff.png" data-on="Images/musicOn.png" data-link="music" data-status="on">
+            <img src="Images/soundOn.png" class="sound-on cursor-pointer w-25 mx-md-2" alt="Sound control" data-off="Images/soundOff.png" data-on="Images/soundOn.png" data-link="sound" data-status="on">
         </div>
         
         <div class="row m-0">
             <div class="col-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
-                <h1 class="game-title text-center mt-2 mb-0">One Kick</h1>
+                <h1 class="heading game-title text-center mt-2 mb-0 d-none d-md-block">One Kick</h1>
+                <h4 class="heading game-title text-center mt-1 mb-0 d-block d-md-none">One Kick</h4>
             </div>
         </div>
         <div class="row m-0 setup">
             <div class="col-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
                 <form class="d-flex flex-column">
-                    <button class="play-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-parent="setup" data-show="game">Play</button>
-                    <button class="help-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-toggle="modal" data-target="#help-modal">Help</button>
-                    <button class="stats-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-parent="setup" data-show="statistics">Statistics</button>
+                    <button class="play-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold d-none d-md-block" data-parent="setup" data-show="game">Play</button>
+                    <button class="help-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold d-none d-md-block" data-toggle="modal" data-target="#help-modal">Help</button>
+                    <button class="stats-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold d-none d-md-block" data-parent="setup" data-show="statistics">Statistics</button>
+                    <button class="play-btn mt-1 btn btn-sm btn-dark font-weight-bold d-block d-md-none" data-parent="setup" data-show="game">Play</button>
+                    <button class="help-btn mt-1 btn btn-sm btn-dark font-weight-bold d-block d-md-none" data-toggle="modal" data-target="#help-modal">Help</button>
+                    <button class="stats-btn mt-1 btn btn-sm btn-dark font-weight-bold d-block d-md-none" data-parent="setup" data-show="statistics">Statistics</button>
                     
-                    <div class="btn-group btn-group-toggle mt-3" data-toggle="buttons">
+                    <div class="btn-group btn-group-toggle mt-1 mt-md-3" data-toggle="buttons">
                         <label class="btn btn-secondary active">
                           <input type="radio" name="difficulty" id="easy" value="easy" data-level0=6000 data-level1=4000 data-level2=2000  autocomplete="off" checked> Easy
                         </label>
@@ -67,46 +71,46 @@
                     </ol>
                     <div class="carousel-inner h-100">
                       <div class="carousel-item active" data-template="template0">
-                        <img src="Images/bg.jpg" class="d-block w-100" style="height: 220px" alt="First Background">
+                        <img src="Images/bg.jpg" class="d-block w-100" alt="First Background">
                       </div>
                       <div class="carousel-item" data-template="template1">
-                        <img src="Images/bg1.jpg" class="d-block w-100" style="height: 220px" alt="Second Background">
+                        <img src="Images/bg1.jpg" class="d-block w-100" alt="Second Background">
                       </div>
                       <div class="carousel-item" data-template="template2">
-                        <img src="Images/bg2.jpg" class="d-block w-100" style="height: 220px" alt="Third Background">
+                        <img src="Images/bg2.jpg" class="d-block w-100" alt="Third Background">
                       </div>
                       <div class="carousel-item" data-template="template3">
-                        <img src="Images/bg3.jpg" class="d-block w-100" style="height: 220px" alt="Third Background">
+                        <img src="Images/bg3.jpg" class="d-block w-100" alt="Third Background">
                       </div>
                       <div class="carousel-item" data-template="template4">
-                        <img src="Images/bg4.png" class="d-block w-100" style="height: 220px" alt="Fourth Background">
+                        <img src="Images/bg4.png" class="d-block w-100" alt="Fourth Background">
                       </div>
                       <div class="carousel-item" data-template="template5">
-                        <img src="Images/bg5.jpg" class="d-block w-100" style="height: 220px" alt="Fifth Background">
+                        <img src="Images/bg5.jpg" class="d-block w-100" alt="Fifth Background">
                       </div>
                       <div class="carousel-item" data-template="template6">
-                        <img src="Images/bg6.jpg" class="d-block w-100" style="height: 220px" alt="Sixth Background">
+                        <img src="Images/bg6.jpg" class="d-block w-100" alt="Sixth Background">
                       </div>
                       <div class="carousel-item" data-template="template7">
-                        <img src="Images/bg7.jpg" class="d-block w-100" style="height: 220px" alt="Seventh Background">
+                        <img src="Images/bg7.jpg" class="d-block w-100" alt="Seventh Background">
                       </div>
                       <div class="carousel-item" data-template="template8">
-                        <img src="Images/bg8.jpg" class="d-block w-100" style="height: 220px" alt="Eigth Background">
+                        <img src="Images/bg8.jpg" class="d-block w-100" alt="Eigth Background">
                       </div>
                       <div class="carousel-item" data-template="template9">
-                        <img src="Images/bg9.jpg" class="d-block w-100" style="height: 220px" alt="Ninth Background">
+                        <img src="Images/bg9.jpg" class="d-block w-100" alt="Ninth Background">
                       </div>
                       <div class="carousel-item" data-template="template10">
-                        <img src="Images/bg10.jpg" class="d-block w-100" style="height: 220px" alt="Tenth Background">
+                        <img src="Images/bg10.jpg" class="d-block w-100" alt="Tenth Background">
                       </div>
                       <div class="carousel-item" data-template="template11">
-                        <img src="Images/bg11.jpg" class="d-block w-100" style="height: 220px" alt="Eleventh Background">
+                        <img src="Images/bg11.jpg" class="d-block w-100" alt="Eleventh Background">
                       </div>
                       <div class="carousel-item" data-template="template12">
-                        <img src="Images/bg12.jpg" class="d-block w-100" style="height: 220px" alt="Twevelth Background">
+                        <img src="Images/bg12.jpg" class="d-block w-100" alt="Twevelth Background">
                       </div>
                       <div class="carousel-item" data-template="template13">
-                        <img src="Images/bg13.jpg" class="d-block w-100" style="height: 220px" alt="Thirteenth Background">
+                        <img src="Images/bg13.jpg" class="d-block w-100" alt="Thirteenth Background">
                       </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -128,7 +132,8 @@
                     <form class="d-flex flex-column">
                         <button class="main-menu-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-parent="game" data-show="setup">Main Menu</button>
                     </form>
-                    <h1 class="score-board text-center mt-4">Score:<span class="score">0</span></h1>
+                    <h1 class="heading score-board text-center mt-4 d-none d-md-block">Score:<span class="score">0</span></h1>
+                    <h4 class="heading score-board text-center mt-1 d-block d-md-none">Score:<span class="score">0</span></h4>
                     <div class="enemy-hit-time progress" style="height: 20px;">
                         <div class="progress-bar bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
