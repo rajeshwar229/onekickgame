@@ -35,6 +35,18 @@
                     <button class="play-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-parent="setup" data-show="game">Play</button>
                     <button class="help-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-toggle="modal" data-target="#help-modal">Help</button>
                     <button class="stats-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-parent="setup" data-show="statistics">Statistics</button>
+                    
+                    <div class="btn-group btn-group-toggle mt-3" data-toggle="buttons">
+                        <label class="btn btn-secondary active">
+                          <input type="radio" name="difficulty" id="easy" value="easy" data-level0=6000 data-level1=4000 data-level2=2000  autocomplete="off" checked> Easy
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="radio" name="difficulty" id="medium" value="medium" data-level0=4500 data-level1=3000 data-level2=1500 autocomplete="off"> Medium
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="radio" name="difficulty" id="hard" value="hard" data-level0=3000 data-level1=2000 data-level2=1000 autocomplete="off"> Hard
+                        </label>
+                      </div>
                 </form>
                 <div id="carouselExampleIndicators" class="carousel background-carousel slide mt-4" data-ride="false" data-interval="false">
                     <ol class="carousel-indicators">
@@ -125,7 +137,7 @@
 
             <div class="game-arena w-100">
                 <div class="left-enemies" data-enemy="left"></div>
-                <div class="hero mx-auto"></div>
+                <div class="hero mx-auto" data-level="2"></div>
                 <div class="right-enemies" data-enemy="right"></div>
             </div>
         </div>
