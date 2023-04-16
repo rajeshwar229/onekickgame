@@ -68,14 +68,6 @@ $(function(){
     const gameController = (() => {
 
         return {
-            // 
-            generateEnemies : function (container, limitNum) {
-                for(let i=1; i <= limitNum.val(); i++){
-                    container.append(`<li class="d-inline-block">
-                    <button class="num new-num btn btn-dark font-weight-bold btn-lg m-3">${i}</button></li>`);
-                }
-                return this;
-            },
 
             // This will add html content to the element passed
             addContent : function (ele, content) {
@@ -117,18 +109,6 @@ $(function(){
                 }
             },
 
-            // Add focus to the element
-            addFocus : function (ele) {
-                ele.focus();
-                return this;
-            },
-
-            // Triggers the event to element
-            triggerEvent : function (ele, action) {
-                ele.trigger(action);
-                return this;
-            },
-
             // Add passed css json object for the element
             addCSS : function (ele, css) {
                 const cssObj = JSON.parse(css);
@@ -152,11 +132,6 @@ $(function(){
                 ele.prepend(content);
                 return this;
             },
-            // checks if the element has that class
-            hasCls : function(ele, cls){
-                ele.hasClass(cls);
-                return this;
-            }
         }
     })();
 
@@ -377,16 +352,18 @@ $(function(){
                     else {
                     }
                  },300);   
-                    
+
                  DOM.documentEle.on('keyup touchstart', function(event){
+                    if(event.type !== 'touchstart'){
                         event.preventDefault();
-                        
+                    }
+                    
                         // This is the setTimeOut time for increasing enemy hit time width
                         let bloodTime = 100;
                         
                         // Check if the game started and enemy reached
                         if(gameObj.start && gameObj.start.enemyReached === true){
-                            if(event.which == 37 || event.which == 39){
+                            if(event.which === 37 || event.which === 39 || event.type === 'touchstart'){
                                 let kick = "";
                                 kickSound();
 
@@ -394,24 +371,29 @@ $(function(){
                                 setTimeout(function(){
                                     gameCtrl.addRemoveCls(DOM.heroEle,false,'kick');
                                 },200);
-                                
-                                if(event.touches[0].clientX < window.innerWidth/2){
-                                    alert('you touched left');
+
+                                if(event.type === 'touchstart'){
+                                    if(event.originalEvent.changedTouches[0].clientX < window.innerWidth/2){
+                                        kick = "left";
+                                        gameCtrl.addRemoveCls(DOM.heroEle,'hero-flip kick');
+                                    }
+                                    else if(event.originalEvent.changedTouches[0].clientX >= window.innerWidth/2){
+                                        kick = "right";
+                                        gameCtrl.addRemoveCls(DOM.heroEle,'kick','hero-flip');
+                                    }
                                 }
-                                if(event.touches[0].clientX > window.innerWidth/2){
-                                    alert('you touched right');
-                                }
-                                
-                                // Add hero-flip and kick class for left kick
-                                if(event.which == 37 || event.touches[0].clientX < window.innerWidth/2){
-                                    kick = "left";
-                                    gameCtrl.addRemoveCls(DOM.heroEle,'hero-flip kick');
-                                    
-                                }
-                                // Remove hero-flip and add kick class for right kick
-                                else if(event.which == 39 || event.touches[0].clientX > window.innerWidth/2){
-                                    kick = "right";
-                                    gameCtrl.addRemoveCls(DOM.heroEle,'kick','hero-flip');
+                                else {
+                                    // Add hero-flip and kick class for left kick
+                                    if(event.which == 37){
+                                        kick = "left";
+                                        gameCtrl.addRemoveCls(DOM.heroEle,'hero-flip kick');
+                                        
+                                    }
+                                    // Remove hero-flip and add kick class for right kick
+                                    else if(event.which == 39){
+                                        kick = "right";
+                                        gameCtrl.addRemoveCls(DOM.heroEle,'kick','hero-flip');
+                                    }
                                 }
                                 
                                 // If kick is same side as nearest enemy side
