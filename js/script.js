@@ -10,9 +10,8 @@ $(function(){
             window : $(window),
             documentEle : $(document),
             bodyEle : $('body'),
+
             // Page blocks
-            mainEle : $('.main'),
-            setupEle : $('.setup'),
             gameEle : $('.game'),
             resultEle : $('.statistics'),
 
@@ -24,16 +23,14 @@ $(function(){
 
             // game elements
             gameArena : $('.game-arena'),
-            resultText : $('.result .result-text'),
             heroEle : $('.hero'), 
             leftEnemyParent :$('.main .game .left-enemies'),
             rightEnemyParent :$('.main .game .right-enemies'),
             enemyHitTime : $('.enemy-hit-time .progress-bar'),
             backgroundCarousel : $('#carouselExampleIndicators'),
 
-            // Statstics elements
+            // Statstics & Audio elements
             scoreEle: $('.score'),
-            gameOverEle: $('.game-over'),
             gamesPlayed : $('.statistics .games-played'),
             highScore : $('.statistics .highest-score'),
             kickSound : $('#kick-sound')[0],
@@ -67,7 +64,6 @@ $(function(){
 
     // This is only for UI manipulation
     const gameController = (() => {
-
         return {
 
             // This will add html content to the element passed
@@ -170,7 +166,7 @@ $(function(){
                     return (Math.round(Math.random()));
                 }
 
-                //Enemy Array
+                // This method adds enemies to the Enemy Array
                 this.ememyArray = function(){
                     let side = this.randomGenerator();
                     let nearest = gameObj.enemyList[0];
@@ -187,6 +183,7 @@ $(function(){
                     }
                 }
 
+                // This method adds the "nearest-enemy" class to the nearest enemy 
                 this.nearestEnemy = function(){
                     if(!DOM.nearestEnemy().length){
                         if(DOM.rightEnemy().first().hasClass('empty-enemy')){
@@ -205,6 +202,7 @@ $(function(){
         // This functions is for all User interactions events
         const setupEvents = () => {
             
+            // This is for the kick sound
             const kickSound = function(){
                 if(DOM.kickSound.duration > 0 && !DOM.kickSound.paused){
                     DOM.kickSound.pause();
@@ -236,6 +234,7 @@ $(function(){
                     gameCtrl.addRemoveCls(DOM.gameEle,'d-none','d-block')
                             .addRemoveCls(DOM.resultEle,'d-block','d-none');
                 }
+                 
                 gameCtrl.addRemoveCls(DOM.gameArena,false,'justify-content-center d-inline-flex')
                         .addRemoveCls(DOM.heroEle,'mx-auto','hero-flip')
                         .addCSS(DOM.enemyHitTime, `{"width": "100%"}`)
@@ -247,8 +246,10 @@ $(function(){
                 clearInterval(gameObj.stopEnemies);
             }
 
+            // This method is for enemy to hit the hero when the enemy hit time reaches 0
             const enemyHit = function(enemyHitTimeWidthArg){
                 
+                // Setting the difficulty and hero level as per the score
                 if(gameObj.score < 100){
                     gameObj.enemyHitDuration = DOM.difficultySelect().dataset.level0;
                     gameCtrl.attrChange(DOM.heroEle,'data-level',0);
@@ -261,26 +262,32 @@ $(function(){
                     gameObj.enemyHitDuration = DOM.difficultySelect().dataset.level2;
                     gameCtrl.attrChange(DOM.heroEle,'data-level',2);
                 }
-                let currentEnemyHitTimeWidth = DOM.enemyHitTime.width();
-                    let currentEnemyHitTimeWidthPercent = currentEnemyHitTimeWidth/enemyHitTimeWidthArg;
 
-                    gameObj.enemyHitDuration > 1000 ? currentEnemyHitTimeWidthPercent < 0.3 ? currentEnemyHitTimeWidthPercent = currentEnemyHitTimeWidthPercent*2: null: currentEnemyHitTimeWidthPercent = 1;
-                    DOM.enemyHitTime.animate({
-                        width: 0
-                    },{duration: gameObj.enemyHitDuration*currentEnemyHitTimeWidthPercent, queue: false}).promise().done(function(){
-                        if(!gameObj.correctKick){
-                            setTimeout(() => {
-                                resetGame();
-                            },400);
-                            if(gameObj.enemyList.length === gameObj.EnemyCount && DOM.gameEle.is(':visible')){
-                                gameCtrl.addRemoveCls(DOM.nearestEnemy(), 'kick')
-                                        .addRemoveCls(DOM.heroEle, 'explode');
-                                kickSound();
-                            }  
-                        } 
-                    });
+
+                let currentEnemyHitTimeWidth = DOM.enemyHitTime.width();
+                let currentEnemyHitTimeWidthPercent = currentEnemyHitTimeWidth/enemyHitTimeWidthArg;
+
+                // Increasing the enemy hit duration if currentEnemyHitTimeWidthPercent is less than 0.3, so giving
+                // little more time for the hero
+                gameObj.enemyHitDuration > 1000 ? currentEnemyHitTimeWidthPercent < 0.3 ? currentEnemyHitTimeWidthPercent = currentEnemyHitTimeWidthPercent*2: null: currentEnemyHitTimeWidthPercent = 1;
+                DOM.enemyHitTime.animate({
+                    width: 0
+                },{duration: gameObj.enemyHitDuration*currentEnemyHitTimeWidthPercent, queue: false}).promise().done(function(){
+                    // Promise method of resetting game executes as the width to 0 animation finishes
+                    if(!gameObj.correctKick){
+                        setTimeout(() => {
+                            resetGame();
+                        },400);
+                        if(gameObj.enemyList.length === gameObj.EnemyCount && DOM.gameEle.is(':visible')){
+                            gameCtrl.addRemoveCls(DOM.nearestEnemy(), 'kick')
+                                    .addRemoveCls(DOM.heroEle, 'explode');
+                            kickSound();
+                        }  
+                    } 
+                });
             }
 
+            // Re-calculate the enemy count of window resize
             DOM.window.on('resize', function(){
                 gameObj.EnemyCount = Math.floor((window.innerWidth-56)/2/41);
             });
@@ -343,7 +350,8 @@ $(function(){
                 });
 
                 const enemyHitTimeWidth = DOM.enemyHitTime.width();
-                // This method will keep adding enemies for every 300 milliseconds until the enemies length reach maximum        
+                // This method will keep adding enemies for every 300 milliseconds until the enemies
+                //length reach maximum        
                 gameObj.stopEnemies = setInterval(function(){
                     gameObj.start.ememyArray();
                     gameObj.start.nearestEnemy();
@@ -373,17 +381,22 @@ $(function(){
                                 let kick = "";
                                 kickSound();
 
-                                // remove the kick class after 200 milliseconds
+                                // Remove the kick class after 200 milliseconds
                                 setTimeout(function(){
                                     gameCtrl.addRemoveCls(DOM.heroEle,false,'kick');
                                 },200);
 
+                                // Touch start event for left and right click
                                 if(event.type === 'touchstart'){
+                                    // Check if main menu button is not touched
                                     if(event.target !== DOM.mainMenu[0]){
+                                        // clientX has x-axis touch position, if x-axis is less than half 
+                                        //of window width, then left side touched
                                         if(event.originalEvent.changedTouches[0].clientX < window.innerWidth/2){
                                             kick = "left";
                                             gameCtrl.addRemoveCls(DOM.heroEle,'hero-flip kick');
                                         }
+                                        // else right side touched
                                         else if(event.originalEvent.changedTouches[0].clientX >= window.innerWidth/2){
                                             kick = "right";
                                             gameCtrl.addRemoveCls(DOM.heroEle,'kick','hero-flip');
@@ -434,7 +447,7 @@ $(function(){
                                             },bloodTime);
                                     },10);
                                     
-                                    // Execute after 100 milliseconds so kcik effect can be seen
+                                    // Execute after 120 milliseconds so kick effect can be seen
                                     setTimeout(() => {
                                         gameCtrl.removeEle(DOM.nearestEnemy());
                                         if(gameObj.nearestEnemySide === "left"){
@@ -447,11 +460,14 @@ $(function(){
                                         // Remove the enemy from enemy list array
                                         gameObj.enemyList.pop();
     
+                                        // Once the enemy list length matches the enemy count, clear interval of stopEnemies 
+                                        //and adjust the css of game arena & hero element
                                         if(gameObj.enemyList.length === gameObj.EnemyCount){
                                             clearInterval(gameObj.stopEnemies);
                                             gameCtrl.addRemoveCls(DOM.gameArena,false,'justify-content-center d-inline-flex')
                                                     .addRemoveCls(DOM.heroEle,false,'mx-auto');
                                         }else{
+                                        // Else keep adding the enemies    
                                             gameObj.start.ememyArray();
                                             gameObj.start.nearestEnemy();
                                         }
@@ -459,6 +475,7 @@ $(function(){
                                     
                                 }
                                 else{
+                                    // Reset the game when kicked on the wrong side
                                     setTimeout(() => {
                                     gameCtrl.addRemoveCls(DOM.nearestEnemy(), 'kick')
                                             .addRemoveCls(DOM.heroEle, 'explode');
@@ -473,7 +490,6 @@ $(function(){
                     });
             })
             
-
             // This will end game and return to main menu
             DOM.mainMenu.on('click', function() {
                 resetGame();
