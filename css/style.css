@@ -59,7 +59,6 @@ body.platform .heading{
     color: white;
 }
 body.platform[data-template="template0"] .heading,
-body.platform[data-template="template4"] .heading,
 body.platform[data-template="template13"] .heading{
     color: inherit;
 }
