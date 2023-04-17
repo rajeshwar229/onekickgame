@@ -294,7 +294,7 @@ $(function(){
 
             // Mute the volume when game is inactive
             setInterval(function(){
-                if($(document).hidden){
+                if(document.hidden){
                     DOM.audioControl('music').each(function(){
                         this.volume = 0;
                     });
