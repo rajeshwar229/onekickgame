@@ -287,6 +287,27 @@ $(function(){
                 });
             }
 
+            // Force landscape mode
+            if (/Mobi|Android/i.test(navigator.userAgent)) {
+                screen.orientation.lock('landscape');
+            }
+
+            // Mute the volume when game is inactive
+            setInterval(function(){
+                if($(document).hidden){
+                    DOM.audioControl('music').each(function(){
+                        this.volume = 0;
+                    });
+                }
+                else{
+                    DOM.audioControl('music').each(function(){
+                        if(this.dataset.status === 'on'){
+                            this.volume = 1;
+                        }
+                    });
+                }
+            },1000);
+
             // Re-calculate the enemy count of window resize
             DOM.window.on('resize', function(){
                 gameObj.EnemyCount = Math.floor((window.innerWidth-56)/2/41);
