@@ -164,14 +164,15 @@ div.explode {
 }
 
 @media (orientation: landscape) and (max-height: 360px) {
- form.setup-form {
+ form.landscape-form {
     flex-direction: row !important;
+    justify-content : center;
  }
- form.setup-form button{
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+ form.landscape-form button{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
  }
  .background-carousel img{
     height: 150px !important;
