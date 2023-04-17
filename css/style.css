@@ -81,6 +81,11 @@ div.main {
 div.volume-controls{
     z-index: 2;
 }
+div.volume-controls .music{
+    filter: drop-shadow(-6px -1px 6px white);}
+div.volume-controls .sound{
+    filter: drop-shadow(8px 0px 5px white);
+}
 div.game-arena {
     height: 85px;
     overflow: hidden;
