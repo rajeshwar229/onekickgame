@@ -7,6 +7,7 @@ $(function(){
         
         //Add static UI Elements here
         const DOMElements = {
+            window : $(window),
             documentEle : $(document),
             bodyEle : $('body'),
             // Page blocks
@@ -280,6 +281,11 @@ $(function(){
                     });
             }
 
+            DOM.window.on('resize', function(){
+                gameObj.EnemyCount = Math.floor((window.innerWidth-56)/2/41);
+            });
+
+            // Hide current page and show specific page for all buttons
             DOM.allButtons.on('click', function(event) {
                 event.preventDefault();
 
@@ -373,13 +379,15 @@ $(function(){
                                 },200);
 
                                 if(event.type === 'touchstart'){
-                                    if(event.originalEvent.changedTouches[0].clientX < window.innerWidth/2){
-                                        kick = "left";
-                                        gameCtrl.addRemoveCls(DOM.heroEle,'hero-flip kick');
-                                    }
-                                    else if(event.originalEvent.changedTouches[0].clientX >= window.innerWidth/2){
-                                        kick = "right";
-                                        gameCtrl.addRemoveCls(DOM.heroEle,'kick','hero-flip');
+                                    if(event.target !== DOM.mainMenu[0]){
+                                        if(event.originalEvent.changedTouches[0].clientX < window.innerWidth/2){
+                                            kick = "left";
+                                            gameCtrl.addRemoveCls(DOM.heroEle,'hero-flip kick');
+                                        }
+                                        else if(event.originalEvent.changedTouches[0].clientX >= window.innerWidth/2){
+                                            kick = "right";
+                                            gameCtrl.addRemoveCls(DOM.heroEle,'kick','hero-flip');
+                                        }
                                     }
                                 }
                                 else {
