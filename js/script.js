@@ -270,7 +270,7 @@ $(function(){
                         if(!gameObj.correctKick){
                             setTimeout(() => {
                                 resetGame();
-                            },300);
+                            },500);
                             if(gameObj.enemyList.length === gameObj.EnemyCount && DOM.gameEle.is(':visible')){
                                 gameCtrl.addRemoveCls(DOM.nearestEnemy(), 'kick')
                                         .addRemoveCls(DOM.heroEle, 'explode');
@@ -337,7 +337,7 @@ $(function(){
                 });
 
                 const enemyHitTimeWidth = DOM.enemyHitTime.width();
-                // This method will keep adding enemies for every 300 milliseconds until the enemies length reach 15        
+                // This method will keep adding enemies for every 300 milliseconds until the enemies length reach maximum        
                 gameObj.stopEnemies = setInterval(function(){
                     gameObj.start.ememyArray();
                     gameObj.start.nearestEnemy();
@@ -455,7 +455,7 @@ $(function(){
                                                 .addRemoveCls(DOM.heroEle, 'explode');
                                     setTimeout(() => {
                                         resetGame();
-                                    },300);
+                                    },500);
                                 }
                             }
                         }
