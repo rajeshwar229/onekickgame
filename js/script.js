@@ -296,13 +296,13 @@ $(function(){
             setInterval(function(){
                 if(document.hidden){
                     DOM.audioControl('music').each(function(){
-                        this.volume = 0;
+                        this.mute = true;
                     });
                 }
                 else{
                     DOM.audioControl('music').each(function(){
                         if(this.dataset.status === 'on'){
-                            this.volume = 1;
+                            this.mute = false;
                         }
                     });
                 }
@@ -333,11 +333,11 @@ $(function(){
             DOM.volumeControls.on('click', function(){
                 DOM.audioControl(this.dataset.link).each(function(){
                     if(this.dataset.status === 'on'){
-                        this.volume = 0;
+                        this.mute = true;
                         this.dataset.status = 'off';
                     }
                     else{
-                        this.volume = 1;
+                        this.mute = false;
                         this.dataset.status = 'on';
                     }
                 });
