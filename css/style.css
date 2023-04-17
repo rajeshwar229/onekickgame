@@ -174,12 +174,12 @@ div.explode {
     margin-right: 0.5rem;
  }
  .background-carousel img{
-    height: 150px;
+    height: 150px !important;
  }
  .enemy-hit-time {
-    height: 10px;
+    height: 10px !important;
  }
  .list-group-item{
-    padding: 0.2rem;
+    padding: 0.2rem !important;
  }
 }
