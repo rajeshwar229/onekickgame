@@ -156,6 +156,10 @@ div.explode {
     height: 220px;
 }
 
+.disable-dbl-tap-zoom {
+    touch-action: manipulation;
+}
+
 @media (max-width: 480px) {
     .background-carousel img{
         height: 120px;
