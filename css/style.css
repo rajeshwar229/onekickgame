@@ -162,3 +162,24 @@ div.explode {
         height: 120px;
     }
 }
+
+@media (orientation: landscape) and (max-height: 360px) {
+ form.setup-form {
+    flex-direction: row !important;
+ }
+ form.setup-form button{
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+ }
+ .background-carousel img{
+    height: 150px;
+ }
+ .enemy-hit-time {
+    height: 10px;
+ }
+ .list-group-item{
+    padding: 0.2rem;
+ }
+}
