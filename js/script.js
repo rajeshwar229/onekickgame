@@ -150,10 +150,10 @@ $(function(){
             correctKick : false,
             EnemyCount : Math.floor((window.innerWidth-56)/2/41),
             gamesPlayedLocalStorage : function(key) {
-                localStorage && localStorage[key] ? localStorage[key] = +localStorage[key]+1 : localStorage[key] = "0";
+                localStorage && localStorage[key] ? localStorage[key] = +localStorage[key]+1 : localStorage[key] = 1;
             },
             highScoreLocalStorage : function(key, score) {
-                localStorage && localStorage[key] ? localStorage[key] < score ? localStorage[key] = score : null  : localStorage[key] = "0";
+                localStorage && localStorage[key] ? localStorage[key] < score ? localStorage[key] = score : null  : localStorage[key] = score;
             }
         };
 
