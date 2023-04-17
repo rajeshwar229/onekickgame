@@ -116,12 +116,6 @@ div.hero-flip {
     background-position-x: -4px;
 }
 
-.main div.kick {
-    background: url(../Images/Hero.png) -200px -217px;
-    margin-top:-2px;
-    width: 56px;
-}
-
 div.enemy {
     background: url(../Images/Hero.png) -11px -12px;
     width: 41px;
@@ -142,6 +136,11 @@ div.empty-enemy {
     background: none;
 }
 
+div.kick {
+    background: url(../Images/Hero.png) -200px -217px;
+    margin-top:-2px;
+    width: 56px;
+}
 div.explode {
     background: url(../Images/explode.png);
     background-size: contain;
