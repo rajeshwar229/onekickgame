@@ -82,7 +82,7 @@ div.volume-controls{
     z-index: 2;
 }
 div.volume-controls .music{
-    filter: drop-shadow(-6px -1px 6px white);}
+    filter: drop-shadow(0 0 10px white);}
 div.volume-controls .sound{
     filter: drop-shadow(8px 0px 5px white);
 }
