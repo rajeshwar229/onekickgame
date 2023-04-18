@@ -9,6 +9,7 @@ $(function(){
         const DOMElements = {
             window : $(window),
             documentEle : $(document),
+            document : document,
             bodyEle : $('body'),
 
             // Page blocks
@@ -288,21 +289,26 @@ $(function(){
             }
 
             // Force landscape mode
-            if (/Mobi|Android/i.test(navigator.userAgent)) {
-                screen.orientation.lock('landscape');
+            let de = DOM.document.documentElement;
+            if(de.requestFullscreen){
+                de.requestFullscreen();
             }
+            else if(de.mozRequestFullscreen){de.mozRequestFullscreen();}
+            else if(de.webkitRequestFullscreen){de.webkitRequestFullscreen();}
+            else if(de.msRequestFullscreen){de.msRequestFullscreen();}
+            screen.orientation.lock('landscape');
 
             // Mute the volume when game is inactive
             setInterval(function(){
-                if(document.hidden){
+                if(DOM.document.hidden){
                     DOM.audioControl('music').each(function(){
-                        this.mute = true;
+                        this.volume = 0;
                     });
                 }
                 else{
                     DOM.audioControl('music').each(function(){
                         if(this.dataset.status === 'on'){
-                            this.mute = false;
+                            this.volume = 1;
                         }
                     });
                 }
@@ -333,11 +339,11 @@ $(function(){
             DOM.volumeControls.on('click', function(){
                 DOM.audioControl(this.dataset.link).each(function(){
                     if(this.dataset.status === 'on'){
-                        this.mute = true;
+                        this.volume = 0;
                         this.dataset.status = 'off';
                     }
                     else{
-                        this.mute = false;
+                        this.volume = 1;
                         this.dataset.status = 'on';
                     }
                 });
