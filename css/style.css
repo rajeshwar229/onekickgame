@@ -169,7 +169,7 @@ div.explode {
 
 @media (max-width: 480px) {
     .background-carousel img{
-        height: 120px;
+        height: 150px;
     }
 }
 
@@ -183,9 +183,6 @@ div.explode {
     padding-right: 0.5rem;
     margin-left: 0.7rem;
     margin-right: 0.7rem;
- }
- .background-carousel img{
-    height: 150px !important;
  }
  .enemy-hit-time {
     height: 10px !important;
