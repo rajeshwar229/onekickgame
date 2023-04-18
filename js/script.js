@@ -298,7 +298,7 @@ $(function(){
                 else if(de.mozRequestFullscreen){de.mozRequestFullscreen();}
                 else if(de.webkitRequestFullscreen){de.webkitRequestFullscreen();}
                 else if(de.msRequestFullscreen){de.msRequestFullscreen();}
-                //screen.orientation.lock('landscape');
+                screen.orientation.lock('landscape');
             });
 
             // Mute the volume when game is inactive
