@@ -163,6 +163,9 @@ div.explode {
 .disable-dbl-tap-zoom {
     touch-action: manipulation;
 }
+.full-screen{
+    height: 32px;
+}
 
 @media (max-width: 480px) {
     .background-carousel img{
