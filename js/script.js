@@ -38,6 +38,7 @@ $(function(){
             bgMusic : $('#bg-music-1')[0],
             gamePlayMusic : $('#bg-music-2')[0],
             volumeControls : $('.volume-controls img'),
+            fullscreen : $('.full-screen'),
 
             //Dynamically added UI Elements should be handled as functions
             nearestEnemy : function() {
@@ -289,14 +290,16 @@ $(function(){
             }
 
             // Force landscape mode
-            let de = DOM.document.documentElement;
-            if(de.requestFullscreen){
-                de.requestFullscreen();
-            }
-            else if(de.mozRequestFullscreen){de.mozRequestFullscreen();}
-            else if(de.webkitRequestFullscreen){de.webkitRequestFullscreen();}
-            else if(de.msRequestFullscreen){de.msRequestFullscreen();}
-            screen.orientation.lock('landscape');
+            DOM.fullscreen.on('click',function(){
+                let de = DOM.document.documentElement;
+                if(de.requestFullscreen){
+                    de.requestFullscreen();
+                }
+                else if(de.mozRequestFullscreen){de.mozRequestFullscreen();}
+                else if(de.webkitRequestFullscreen){de.webkitRequestFullscreen();}
+                else if(de.msRequestFullscreen){de.msRequestFullscreen();}
+                screen.orientation.lock('landscape');
+            });
 
             // Mute the volume when game is inactive
             setInterval(function(){
