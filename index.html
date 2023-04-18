@@ -32,23 +32,19 @@
         <div class="row m-0 setup">
             <div class="col-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
                 <form class="landscape-form d-flex flex-column">
-                    <button class="play-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold d-none d-md-block" data-parent="setup" data-show="game">Play</button>
-                    <button class="help-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold d-none d-md-block" data-toggle="modal" data-target="#help-modal">Help</button>
-                    <button class="stats-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold d-none d-md-block" data-parent="setup" data-show="statistics">Statistics</button>
-                    <button class="full-screen-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold d-none d-md-block" data-fullscreen="off">Full Screen</button>
-                    <button class="play-btn mt-1 btn btn-sm btn-dark font-weight-bold d-block d-md-none" data-parent="setup" data-show="game">Play</button>
-                    <button class="help-btn mt-1 btn btn-sm btn-dark font-weight-bold d-block d-md-none" data-toggle="modal" data-target="#help-modal">Help</button>
-                    <button class="stats-btn mt-1 btn btn-sm btn-dark font-weight-bold d-block d-md-none" data-parent="setup" data-show="statistics">Statistics</button>
-                    <button class="full-screen-btn mt-1 btn btn-sm btn-dark font-weight-bold d-block d-md-none" data-fullscreen="off">Full Screen</button>
+                    <button class="play-btn mt-3 btn btn-dark font-weight-bold " data-parent="setup" data-show="game">Play</button>
+                    <button class="help-btn mt-3 btn btn-dark font-weight-bold " data-toggle="modal" data-target="#help-modal">Help</button>
+                    <button class="stats-btn mt-3 btn btn-dark font-weight-bold " data-parent="setup" data-show="statistics">Statistics</button>
+                    <button class="full-screen-btn mt-3 btn btn-dark font-weight-bold " data-fullscreen="off">Full Screen</button>
                     
-                    <div class="btn-group btn-group-toggle mt-1 mt-md-3" data-toggle="buttons">
+                    <div class="btn-group btn-group-toggle mt-3" data-toggle="buttons">
                         <label class="btn btn-secondary active">
                           <input type="radio" name="difficulty" id="easy" value="easy" data-level0=6000 data-level1=4000 data-level2=2000  autocomplete="off" checked> Easy
                         </label>
-                        <label class="btn btn-secondary">
+                        <label class="btn btn-warning">
                           <input type="radio" name="difficulty" id="medium" value="medium" data-level0=4500 data-level1=3000 data-level2=1500 autocomplete="off"> Medium
                         </label>
-                        <label class="btn btn-secondary">
+                        <label class="btn btn-danger">
                           <input type="radio" name="difficulty" id="hard" value="hard" data-level0=3000 data-level1=2000 data-level2=1000 autocomplete="off"> Hard
                         </label>
                       </div>
@@ -138,8 +134,9 @@
         <div class="game d-none">
             <div class="row m-0">
                 <div class="col-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
-                    <form class="d-flex flex-column">
-                        <button class="main-menu-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-parent="game" data-show="setup">Main Menu</button>
+                    <form class="landscape-form d-flex flex-column">
+                        <button class="main-menu-btn mt-3 btn btn-dark font-weight-bold" data-parent="game" data-show="setup">Main Menu</button>
+                        <button class="full-screen-btn mt-3 btn btn-dark font-weight-bold " data-fullscreen="off">Full Screen</button>
                     </form>
                     <h1 class="heading score-board text-center mt-4 d-none d-md-block">Score:<span class="score">0</span></h1>
                     <h4 class="heading score-board text-center mt-1 d-block d-md-none">Score:<span class="score">0</span></h4>
@@ -164,8 +161,8 @@
                     <li class="list-group-item text-info">Highest Score 🔝 : <span class="highest-score text-dark">0</span></li>
                 </ul>
                 <form class="landscape-form d-flex flex-column">
-                    <button class="play-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-parent="statistics" data-show="game">Play</button>
-                    <button class="main-menu-btn mt-2 mt-lg-3 btn btn-dark font-weight-bold" data-parent="statistics" data-show="setup">Main Menu</button>
+                    <button class="play-btn mt-3 btn btn-dark font-weight-bold" data-parent="statistics" data-show="game">Play</button>
+                    <button class="main-menu-btn mt-3 btn btn-dark font-weight-bold" data-parent="statistics" data-show="setup">Main Menu</button>
                 </form>
             </div>
         </div>
