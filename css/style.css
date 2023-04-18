@@ -179,10 +179,10 @@ div.explode {
     justify-content : center;
  }
  form.landscape-form button{
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-left: 0.75rem;
-    margin-right: 0.75rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-left: 0.7rem;
+    margin-right: 0.7rem;
  }
  .background-carousel img{
     height: 150px !important;
