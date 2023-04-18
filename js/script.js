@@ -18,9 +18,10 @@ $(function(){
 
             // Buttons
             allButtons : $('button'),
-            playButton : $('.play-btn'),
-            mainMenu : $('.main-menu-btn'),
+            playBtn : $('.play-btn'),
+            mainMenuBtn : $('.main-menu-btn'),
             gameStatsBtn : $('.stats-btn'),
+            fullscreenBtn : $('.full-screen-btn'),
 
             // game elements
             gameArena : $('.game-arena'),
@@ -38,7 +39,6 @@ $(function(){
             bgMusic : $('#bg-music-1')[0],
             gamePlayMusic : $('#bg-music-2')[0],
             volumeControls : $('.volume-controls img'),
-            fullscreen : $('.full-screen'),
 
             //Dynamically added UI Elements should be handled as functions
             nearestEnemy : function() {
@@ -290,15 +290,28 @@ $(function(){
             }
 
             // Force landscape mode
-            DOM.fullscreen.on('click',function(){
+            DOM.fullscreenBtn.on('click',function(){
                 let de = DOM.document.documentElement;
-                if(de.requestFullscreen){
-                    de.requestFullscreen();
+                if(this.dataset.fullscreen === 'off'){
+                    if(de.requestFullscreen){
+                        de.requestFullscreen();
+                    }
+                    else if(de.mozRequestFullscreen){de.mozRequestFullscreen();}
+                    else if(de.webkitRequestFullscreen){de.webkitRequestFullscreen();}
+                    else if(de.msRequestFullscreen){de.msRequestFullscreen();}
+                    screen.orientation.lock('landscape');
+                    gameCtrl.attrChange($(this),'data-fullscreen','on');
+                    gameCtrl.addContent($(this),'Exit Full Screen');
                 }
-                else if(de.mozRequestFullscreen){de.mozRequestFullscreen();}
-                else if(de.webkitRequestFullscreen){de.webkitRequestFullscreen();}
-                else if(de.msRequestFullscreen){de.msRequestFullscreen();}
-                screen.orientation.lock('landscape');
+                else {
+                    screen.orientation.unlock();
+                    if(DOM.document.fullscreen){
+                        DOM.document.exitFullscreen();
+                    }
+                    gameCtrl.attrChange($(this),'data-fullscreen','off');
+                    gameCtrl.addContent($(this),'Full Screen');
+                }
+                
             });
 
             // Mute the volume when game is inactive
@@ -361,7 +374,7 @@ $(function(){
             });
 
             // Start the Game everytime Play button is clicked
-            DOM.playButton.on('click', function(event){
+            DOM.playBtn.on('click', function(event){
                 DOM.bgMusic.pause();
                 DOM.bgMusic.currentTime = 0;
                 DOM.gamePlayMusic.play();
@@ -419,7 +432,7 @@ $(function(){
                                 // Touch start event for left and right click
                                 if(event.type === 'touchstart'){
                                     // Check if main menu button is not touched
-                                    if(event.target !== DOM.mainMenu[0]){
+                                    if(event.target !== DOM.mainMenuBtn[0]){
                                         // clientX has x-axis touch position, if x-axis is less than half 
                                         //of window width, then left side touched
                                         if(event.originalEvent.changedTouches[0].clientX < window.innerWidth/2){
@@ -521,7 +534,7 @@ $(function(){
             })
             
             // This will end game and return to main menu
-            DOM.mainMenu.on('click', function() {
+            DOM.mainMenuBtn.on('click', function() {
                 resetGame();
             });
 
