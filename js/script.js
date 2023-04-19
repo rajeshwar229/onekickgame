@@ -308,7 +308,7 @@ $(function(){
                     screen.orientation.lock('landscape');
                     gameCtrl.attrChange($(this),'data-fullscreen','on');
                     gameCtrl.addContent($(this),'Exit Full Screen');
-                    //screen.orientation.type.indexOf('landscape') !== -1 && DOM.gameArena.css({"bottom" : window.innerHeight/12.5});
+                    screen.orientation.type.indexOf('landscape') !== -1 && DOM.gameArena.css({"bottom" : window.innerHeight/12.5});
                 }
                 else {
                     screen.orientation.unlock();
@@ -393,11 +393,11 @@ $(function(){
                 DOM.scoreEle.text(gameObj.score);
                 gameCtrl.addRemoveCls(DOM.gameArena,'justify-content-center d-inline-flex')
                         .addRemoveCls(DOM.heroEle, false, 'explode');
-                // if(!DOM.document.fullscreen){
+                if(!DOM.document.fullscreen){
                     DOM.gameArena.css({
                         "bottom" : window.innerHeight/11.5
                     });
-                // }
+                }
                 const enemyHitTimeWidth = DOM.enemyHitTime.width();
                 // This method will keep adding enemies for every 300 milliseconds until the enemies
                 //length reach maximum        
