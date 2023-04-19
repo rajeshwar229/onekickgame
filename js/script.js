@@ -339,6 +339,7 @@ $(function(){
             // Re-calculate the enemy count of window resize
             DOM.window.on('resize', function(){
                 gameObj.EnemyCount = Math.floor((window.innerWidth-56)/2/41);
+                screen.orientation.type.indexOf('landscape') !== -1 && DOM.gameArena.css({"bottom" : window.innerHeight/13.5});
             });
 
             // Hide current page and show specific page for all buttons
