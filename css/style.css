@@ -176,7 +176,7 @@ div.explode {
 @media (orientation: landscape) and (max-height: 360px) {
  form.landscape-form {
     flex-direction: row !important;
-    justify-content : center;
+    justify-content : space-around;
  }
  form.landscape-form button{
     padding-left: 0.5rem;
