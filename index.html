@@ -16,8 +16,8 @@
 <body class="bg-light text-dark platform disable-dbl-tap-zoom" data-template="template0">
     <div class="main">
         <div class="volume-controls position-fixed fixed-right">
-            <audio id="bg-music-1" src="bg-music-1.mp3" type="audio/mp3" autoplay="true" loop="loop" data-link="music" data-status="on"></audio>
-            <audio id="bg-music-2" src="bg-music-2.mp3" type="audio/mp3" autoplay="true" loop="loop" data-link="music" data-status="on"></audio>
+            <audio id="bg-music" src="bg-music-1.mp3" type="audio/mp3" autoplay="true" loop="loop" data-link="music" data-status="on"></audio>
+            <audio id="game-music" src="game-music-0.mp3" data-level0="game-music-0.mp3" data-level1="game-music-1.mp3" data-level2="game-music-2.mp3" type="audio/mp3" autoplay="true" loop="loop" data-link="music" data-status="on"></audio>
             <audio id="kick-sound" src="kick-sound.mp3" type="audio/mp3" data-link="sound" data-status="on"></audio>
             <img src="Images/musicOn.png" class="music cursor-pointer w-25 mx-md-2" alt="Music control" data-off="Images/musicOff.png" data-on="Images/musicOn.png" data-link="music" data-status="on" />
             <img src="Images/soundOn.png" class="sound cursor-pointer w-25 mx-md-2" alt="Sound control" data-off="Images/soundOff.png" data-on="Images/soundOn.png" data-link="sound" data-status="on" />
@@ -37,7 +37,7 @@
                     <button class="stats-btn mt-3 btn btn-dark font-weight-bold " data-parent="setup" data-show="statistics">Statistics</button>
                     <button class="full-screen-btn mt-3 btn btn-dark font-weight-bold " data-fullscreen="off">Full Screen</button>
                     
-                    <div class="btn-group btn-group-toggle mt-3" data-toggle="buttons">
+                    <div class="btn-group btn-group-toggle mt-3 align-items-center" data-toggle="buttons">
                         <label class="btn btn-secondary active">
                           <input type="radio" name="difficulty" id="easy" value="easy" data-level0=6000 data-level1=4000 data-level2=2000  autocomplete="off" checked> Easy
                         </label>
@@ -134,9 +134,8 @@
         <div class="game d-none">
             <div class="row m-0">
                 <div class="col-10 col-md-8 col-lg-6 col-xl-4 mx-auto">
-                    <form class="landscape-form d-flex flex-column">
+                    <form class="d-flex flex-column">
                         <button class="main-menu-btn mt-3 btn btn-dark font-weight-bold" data-parent="game" data-show="setup">Main Menu</button>
-                        <button class="full-screen-btn mt-3 btn btn-dark font-weight-bold " data-fullscreen="off">Full Screen</button>
                     </form>
                     <h1 class="heading score-board text-center mt-4 d-none d-md-block">Score:<span class="score">0</span></h1>
                     <h4 class="heading score-board text-center mt-1 d-block d-md-none">Score:<span class="score">0</span></h4>

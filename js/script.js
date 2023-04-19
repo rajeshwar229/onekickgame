@@ -36,8 +36,8 @@ $(function(){
             gamesPlayed : $('.statistics .games-played'),
             highScore : $('.statistics .highest-score'),
             kickSound : $('#kick-sound')[0],
-            bgMusic : $('#bg-music-1')[0],
-            gamePlayMusic : $('#bg-music-2')[0],
+            bgMusic : $('#bg-music')[0],
+            gamePlayMusic : $('#game-music')[0],
             volumeControls : $('.volume-controls img'),
 
             //Dynamically added UI Elements should be handled as functions
@@ -216,11 +216,15 @@ $(function(){
                 }
             }
 
+            const switchMusic = function(stopMusic, playMusic){
+                stopMusic.pause();
+                stopMusic.currentTime = 0;
+                playMusic.play();
+            }
+
             // This will reset all the values to beginning values
             const resetGame = function() {
-                DOM.gamePlayMusic.pause();
-                DOM.gamePlayMusic.currentTime = 0;
-                DOM.bgMusic.play();
+                switchMusic(DOM.gamePlayMusic, DOM.bgMusic);
                 DOM.enemyHitTime.stop();
                 gameObj.highScoreLocalStorage("oneKickHighScore", gameObj.score);
 
@@ -251,20 +255,22 @@ $(function(){
             // This method is for enemy to hit the hero when the enemy hit time reaches 0
             const enemyHit = function(enemyHitTimeWidthArg){
                 
+                const scoreChanges = function(level,levelVal){
+                    gameObj.enemyHitDuration = DOM.difficultySelect().dataset[level];
+                    gameCtrl.attrChange(DOM.heroEle,'data-level',levelVal);
+                    DOM.gamePlayMusic.src.indexOf(`game-music-${levelVal}.mp3`) === -1 && gameCtrl.attrChange(DOM.gamePlayMusic,'src',DOM.gamePlayMusic.dataset[level]);
+                }
+                
                 // Setting the difficulty and hero level as per the score
                 if(gameObj.score < 100){
-                    gameObj.enemyHitDuration = DOM.difficultySelect().dataset.level0;
-                    gameCtrl.attrChange(DOM.heroEle,'data-level',0);
+                    scoreChanges('level0',0);
                 }
                 else if(gameObj.score >= 100 & gameObj.score <200){
-                    gameObj.enemyHitDuration = DOM.difficultySelect().dataset.level1;
-                    gameCtrl.attrChange(DOM.heroEle,'data-level',1);
+                    scoreChanges('level1',1);
                 }
                 else{
-                    gameObj.enemyHitDuration = DOM.difficultySelect().dataset.level2;
-                    gameCtrl.attrChange(DOM.heroEle,'data-level',2);
+                    scoreChanges('level2',2);
                 }
-
 
                 let currentEnemyHitTimeWidth = DOM.enemyHitTime.width();
                 let currentEnemyHitTimeWidthPercent = currentEnemyHitTimeWidth/enemyHitTimeWidthArg;
@@ -375,9 +381,7 @@ $(function(){
 
             // Start the Game everytime Play button is clicked
             DOM.playBtn.on('click', function(event){
-                DOM.bgMusic.pause();
-                DOM.bgMusic.currentTime = 0;
-                DOM.gamePlayMusic.play();
+                switchMusic(DOM.bgMusic, DOM.gamePlayMusic);
                 jQuery.fx.off = true;
                 // Unbind keyup event as kick should be enabled only after the enemy reaches the hero 
                 DOM.documentEle.unbind('keyup touchstart');
