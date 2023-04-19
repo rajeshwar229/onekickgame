@@ -308,7 +308,7 @@ $(function(){
                     screen.orientation.lock('landscape');
                     gameCtrl.attrChange($(this),'data-fullscreen','on');
                     gameCtrl.addContent($(this),'Exit Full Screen');
-                    screen.orientation.type.indexOf('landscape') !== -1 && DOM.gameArena.css({"bottom" : window.innerHeight/13.5});
+                    screen.orientation.type.indexOf('landscape') !== -1 && DOM.gameArena.css({"bottom" : window.innerHeight/12.5});
                 }
                 else {
                     screen.orientation.unlock();
