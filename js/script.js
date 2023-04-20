@@ -321,21 +321,20 @@ $(function(){
                 
             });
 
+            // Unmute the volume when game is active
+            DOM.window.focus(function(){
+                DOM.audioControl('music').each(function(){
+                    if(this.dataset.status === 'on'){
+                        this.muted = false;
+                    }
+                });
+            });
             // Mute the volume when game is inactive
-            setInterval(function(){
-                if(DOM.document.hidden){
-                    DOM.audioControl('music').each(function(){
-                        this.volume = 0;
-                    });
-                }
-                else{
-                    DOM.audioControl('music').each(function(){
-                        if(this.dataset.status === 'on'){
-                            this.volume = 1;
-                        }
-                    });
-                }
-            },1000);
+            DOM.window.blur(function(){
+                DOM.audioControl('music').each(function(){
+                    this.muted = true;
+                });
+            });
 
             // Re-calculate the enemy count of window resize
             DOM.window.on('resize', function(){
@@ -362,11 +361,11 @@ $(function(){
             DOM.volumeControls.on('click', function(){
                 DOM.audioControl(this.dataset.link).each(function(){
                     if(this.dataset.status === 'on'){
-                        this.volume = 0;
+                        this.muted = true;
                         this.dataset.status = 'off';
                     }
                     else{
-                        this.volume = 1;
+                        this.muted = false;
                         this.dataset.status = 'on';
                     }
                 });
