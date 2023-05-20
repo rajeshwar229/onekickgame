@@ -163,8 +163,10 @@ div.explode {
 .disable-dbl-tap-zoom {
     touch-action: manipulation;
 }
-.full-screen{
-    height: 32px;
+
+.time-span {
+	height: 20px;
+	width: 100%;
 }
 
 @media (max-width: 480px) {
@@ -179,10 +181,10 @@ div.explode {
     justify-content : space-around;
  }
  form.landscape-form button{
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    margin-left: 0.7rem;
-    margin-right: 0.7rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    margin-left: 0.6rem;
+    margin-right: 0.6rem;
  }
  .enemy-hit-time {
     height: 10px !important;
